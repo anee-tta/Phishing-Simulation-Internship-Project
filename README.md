@@ -1,1 +1,3 @@
 # Phishing-Simulation-Internship-Project
+
+This phishing mail simulator helps users practice identifying phishing emails in a safe environment. It presents scenarios based on realistic situations such as payroll updates,prize offers, system, security alerts etc. For each scenario, the user reads the email and selects whether they believe it is a phishing attempt or a legitimate message. The simulator passes these answers and produce results that reads their choices, compares them to the correct classifications, and calculates a total score along with an estimated phishing risk level. The results page also summarizes the key warning signs or trustworthy indicators in each email such as suspicious domains, password requests, and urgency.
