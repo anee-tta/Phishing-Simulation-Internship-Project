@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Phishing Simulator - Example 1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="app-header">
+      <h1 class="title">Phishing Awareness Simulator</h1>
+      
+      </p>
+    </div>
+    <div class="email-card">
+      <div class="email-header">
+        <div>
+          <div class="email-subject">System Update Scheduled Tonight</div>
+          <div class="email-meta">
+            From: IT Services &lt;it-services@company.com&gt;<br>
+            To: You &lt;you@example.com&gt; • Date: Monday, 11:30
+          </div>
+        </div>
+        <span class="badge badge-safe">Informational</span>
+      </div>
+      <div class="email-body">
+        Dear colleague,<br><br>
+        We will perform routine maintenance on our internal systems tonight between 23:00–01:00.
+        During this time, access to the VPN and shared drives may be temporarily unavailable.<br><br>
+        You do not need to take any action. If you experience ongoing issues after the maintenance window,
+        please contact the IT helpdesk via the usual support portal.<br><br>
+        Kind regards,<br>
+        IT Services
+      </div>
+      <div class="email-footer">
+        <div class="email-footer-info">
+          Tip: Legitimate IT updates usually don’t ask you to click strange links or provide credentials.
+        </div>
+        <form id="exampleForm">
+          <div class="radio-group">
+            <label>
+              <input type="radio" name="answer" value="phishing" required> Phishing
+            </label>
+            <label>
+              <input type="radio" name="answer" value="not"> Not phishing
+            </label>
+          </div>
+          <div class="actions">
+            <button type="submit" class="btn">Next example</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  
+
+  <script>
+    function getQueryParams() {
+      const params = {};
+      const search = window.location.search.substring(1);
+      if (!search) return params;
+      const pairs = search.split('&');
+      for (const p of pairs) {
+        const [key, value] = p.split('=');
+        params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+      }
+      return params;
+    }
+
+    const params = getQueryParams();
+
+    document.getElementById('exampleForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const answer = document.querySelector('input[name="answer"]:checked').value;
+      const nextParams = new URLSearchParams();
+      nextParams.set('a0', params.a0 || '');
+      nextParams.set('a1', params.a1 || '');
+      nextParams.set('a2', params.a2 || '');
+      nextParams.set('a3', answer);
+      const nextUrl = 'example5.html?' + nextParams.toString();
+      window.location.href = nextUrl;
+    });
+  </script>
+</body>
+</html>

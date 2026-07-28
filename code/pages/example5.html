@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Phishing Simulator - Example 1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="app-header">
+      <h1 class="title">Phishing Awareness Simulator</h1>
+      
+      </p>
+    </div>
+    <div class="email-card">
+      <div class="email-header">
+        <div>
+          <div class="email-subject">Urgent: Account Login Attempt Detected</div>
+          <div class="email-meta">
+            From: Security Alert &lt;security@secure-login-help.com&gt;<br>
+            To: You &lt;you@example.com&gt; • Date: Today, 13:22
+          </div>
+        </div>
+        <span class="badge badge-warning">Security scare</span>
+      </div>
+      <div class="email-body">
+        Hi,<br><br>
+        We detected a suspicious login attempt to your email account from an unknown device.
+        If this was not you, you must <strong>immediately</strong> confirm your identity to avoid permanent account closure.<br><br>
+        Click the link below and sign in using your email address and password to secure your account:<br>
+        <a href="#">https://secure-login-help.com/verify-account</a><br><br>
+        Security Team
+      </div>
+      <div class="email-footer">
+        <div class="email-footer-info">
+          Tip: Check whether security alerts come from the official domain and whether they ask for passwords directly.
+        </div>
+        <form id="exampleForm">
+          <div class="radio-group">
+            <label>
+              <input type="radio" name="answer" value="phishing" required> Phishing
+            </label>
+            <label>
+              <input type="radio" name="answer" value="not"> Not phishing
+            </label>
+          </div>
+          <div class="actions">
+            <button type="submit" class="btn">See results</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+   
+
+  <script>
+    function getQueryParams() {
+      const params = {};
+      const search = window.location.search.substring(1);
+      if (!search) return params;
+      const pairs = search.split('&');
+      for (const p of pairs) {
+        const [key, value] = p.split('=');
+        params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+      }
+      return params;
+    }
+
+    const params = getQueryParams();
+
+    document.getElementById('exampleForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const answer = document.querySelector('input[name="answer"]:checked').value;
+      const nextParams = new URLSearchParams();
+      nextParams.set('a0', params.a0 || '');
+      nextParams.set('a1', params.a1 || '');
+      nextParams.set('a2', params.a2 || '');
+      nextParams.set('a3', params.a3 || '');
+      nextParams.set('a4', answer);
+      const nextUrl = 'results.html?' + nextParams.toString();
+      window.location.href = nextUrl;
+    });
+  </script>
+</body>
+</html>
