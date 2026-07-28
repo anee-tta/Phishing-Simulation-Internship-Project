@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Phishing Simulator - Example 1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="app-header">
+      <h1 class="title">Phishing Awareness Simulator</h1>
+      
+      </p>
+    </div>
+
+    <div class="email-card">
+      <div class="email-header">
+        <div>
+          <div class="email-subject">You’ve Won a Free Phone!</div>
+          <div class="email-meta">
+            From: Prize Center &lt;claim@mega-prize-center.info&gt;<br>
+            To: You &lt;you@example.com&gt; • Date: Today, 07:03
+          </div>
+        </div>
+        <span class="badge badge-warning">Too good to be true</span>
+      </div>
+      <div class="email-body">
+        Congratulations! You have been randomly selected to receive a brand new smartphone.<br><br>
+        To claim your prize, simply download the attached file and open it on your computer.<br>
+        Once opened, you will be prompted to enter your email password to confirm your identity.<br><br>
+        Hurry! This offer expires in 1 hour.<br><br>
+        Best regards,<br>
+        Mega Prize Center
+      </div>
+      <div class="email-footer">
+        <div class="email-footer-info">
+          Tip: Be cautious of unsolicited prizes, attachments, and requests for your password.
+        </div>
+        <form id="exampleForm">
+          <div class="radio-group">
+            <label>
+              <input type="radio" name="answer" value="phishing" required> Phishing
+            </label>
+            <label>
+              <input type="radio" name="answer" value="not"> Not phishing
+            </label>
+          </div>
+          <div class="actions">
+            <button type="submit" class="btn">Next example</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+   
+
+  <script>
+    function getQueryParams() {
+      const params = {};
+      const search = window.location.search.substring(1);
+      if (!search) return params;
+      const pairs = search.split('&');
+      for (const p of pairs) {
+        const [key, value] = p.split('=');
+        params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+      }
+      return params;
+    }
+
+    const params = getQueryParams();
+
+    document.getElementById('exampleForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const answer = document.querySelector('input[name="answer"]:checked').value;
+      const nextParams = new URLSearchParams();
+      nextParams.set('a0', params.a0 || '');
+      nextParams.set('a1', params.a1 || '');
+      nextParams.set('a2', answer);
+      const nextUrl = 'example4.html?' + nextParams.toString();
+      window.location.href = nextUrl;
+    });
+  </script>
+</body>
+</html>
