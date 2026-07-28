@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Phishing Simulator - Start</title>
+  <link rel="stylesheet" href="pages/style.css">
+</head>
+<body class="landing-body">
+  <div class="app landing-app">
+    <div class="app-header">
+      <h1 class="title">Phishing Simulation</h1>
+      <p class="subtitle">
+        Practice spotting phishing emails in a safe environment. You’ll see <span class="highlight-text">5 realistic examples</span> and decide whether each one is phishing or legitimate.
+      </p>
+    </div>
+
+    <div class="app-content">
+      <p class="subtitle">
+        How it works:
+        <br>
+        • Read each email carefully.<br>
+        • Choose <strong>Phishing</strong> or <strong>Not phishing</strong>.<br>
+        • At the end, you’ll see your score, your estimated risk level, and the key red flags you may have missed.
+      </p>
+
+      <p class="subtitle">
+        This exercise is for training and awareness only. No real credentials are collected. Try to answer based on how you would behave in real life.
+      </p>
+
+      <div class="actions" style="justify-content: flex-start; margin-top: 18px;">
+        <button class="btn" id="startBtn">Start simulation</button>
+      </div>
+
+      <p class="note">
+        When you’re ready, click “Start simulation” to go to Example 1.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('startBtn').addEventListener('click', function () {
+      // Note the 'pages/' prefix now
+      window.location.href = 'pages/example1.html';
+    });
+  </script>
+</body>
+</html>
