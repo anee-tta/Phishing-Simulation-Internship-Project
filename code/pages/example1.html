@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Phishing Simulator - Example 1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="app-header">
+      <h1 class="title">Phishing Awareness Simulator</h1>
+      
+      </p>
+    </div>
+
+    <div class="app-content">
+      <div class="email-card">
+        <!-- email content as before -->
+        <div class="email-header">
+          <div>
+            <div class="email-subject">[ACTION REQUIRED] Verify your Payroll Information</div>
+            <div class="email-meta">
+              From: HR Support &lt;hr-support@company-payroll-secure.com&gt;<br>
+              To: You &lt;you@example.com&gt; • Date: Today, 09:12
+            </div>
+          </div>
+          <span class="badge badge-warning">Potentially suspicious</span>
+        </div>
+        <div class="email-body">
+          <!-- body text unchanged -->
+          Dear Employee,<br><br>
+          We recently updated our payroll processing system and require all employees to verify
+          their payment details immediately. Failure to complete this verification within 3 hours
+          will result in suspension of salary payments.<br><br>
+          Please click the secure link below and sign in with your company email and password:<br>
+          <a href="#">https://company-payroll-secure.com/verify</a><br><br>
+          Regards,<br>
+          HR Support Team
+        </div>
+        <div class="email-footer">
+          <div class="email-footer-info">
+            Tip: Look carefully at the sender address and urgency. Does this match how HR normally communicates?
+          </div>
+          <form id="exampleForm">
+            <div class="radio-group">
+              <label>
+                <input type="radio" name="answer" value="phishing" required> Phishing
+              </label>
+              <label>
+                <input type="radio" name="answer" value="not"> Not phishing
+              </label>
+            </div>
+            <div class="actions">
+              <button type="submit" class="btn">Next example</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <p class="note">
+        Your choice will be remembered and used to calculate your final score at the end.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('exampleForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const answer = document.querySelector('input[name="answer"]:checked').value;
+      // a0 corresponds to example 1, next page is in same folder
+      const nextUrl = 'example2.html?a0=' + encodeURIComponent(answer);
+      window.location.href = nextUrl;
+    });
+  </script>
+</body>
+</html>
